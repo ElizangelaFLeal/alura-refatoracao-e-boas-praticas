@@ -23,7 +23,7 @@ public class PetService {
         System.out.println("Digite o id ou nome do abrigo:");
         String idOuNome = new Scanner(System.in).nextLine();
 
-        String uri = "http://localhost:8081/abrigos/" + idOuNome + "/pets";
+        String uri = "http://localhost:8080/abrigos/" + idOuNome + "/pets";
         HttpResponse<String> response = client.dispararRequisicaoGet(uri);
         int statusCode = response.statusCode();
         if (statusCode == 404 || statusCode == 500) {
@@ -68,7 +68,7 @@ public class PetService {
 
             PetDomain pet = new PetDomain(tipo, nome, raca, idade, cor, peso);
 
-            String uri = "http://localhost:8081/abrigos/" + idOuNome + "/pets";
+            String uri = "http://localhost:8080/abrigos/" + idOuNome + "/pets";
             HttpResponse<String> response = client.dispararRequisicaoPost(uri, pet);
             int statusCode = response.statusCode();
             String responseBody = response.body();

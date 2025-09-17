@@ -18,7 +18,7 @@ public class AbrigoService {
         this.client = client;
     }
     public void listarAbrigo() throws IOException, InterruptedException {
-        String uri = "http://localhost:8081/abrigos";
+        String uri = "http://localhost:8080/abrigos";
         HttpResponse<String> response = client.dispararRequisicaoGet(uri);
         String responseBody = response.body();
 
@@ -42,7 +42,7 @@ public class AbrigoService {
 
         AbrigoDomain abrigo = new AbrigoDomain(nome, telefone, email);
 
-        String uri = "http://localhost:8081/abrigos";
+        String uri = "http://localhost:8080/abrigos";
         HttpResponse<String> response = client.dispararRequisicaoPost(uri, abrigo);
 
         int statusCode = response.statusCode();
