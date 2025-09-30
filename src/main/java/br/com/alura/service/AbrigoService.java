@@ -1,4 +1,4 @@
-package br.com.alura.services;
+package br.com.alura.service;
 
 import br.com.alura.client.HttpClientConfiguration;
 import br.com.alura.domain.AbrigoDomain;
@@ -26,11 +26,13 @@ public class AbrigoService {
         List<AbrigoDomain> abrigoList = Arrays.stream(abrigos).toList();
         System.out.println("Response Body: " + responseBody);
 
-        for (AbrigoDomain abrigo : abrigoList) {
-            long id = abrigo.getId();
-            String nome = abrigo.getNome();
-            System.out.println(id + " - " + nome);
+        if(abrigoList.isEmpty()) {
+            System.out.println("Nenhum abrigo cadastrado!");
+            return;
+        }else {
+            mostrarAbrigos(abrigoList);
         }
+
     }
     public void cadastrarAbrigo() throws IOException, InterruptedException {
         System.out.println("Digite o nome do abrigo:");
@@ -53,6 +55,14 @@ public class AbrigoService {
         } else if (statusCode == 400 || statusCode == 500) {
             System.out.println("Erro ao cadastrar o abrigo:");
             System.out.println(responseBody);
+        }
+    }
+
+    public void mostrarAbrigos(List<AbrigoDomain> abrigos){
+        for (AbrigoDomain abrigo : abrigos) {
+            long id = abrigo.getId();
+            String nome = abrigo.getNome();
+            System.out.println(id + " - " + nome);
         }
     }
 }

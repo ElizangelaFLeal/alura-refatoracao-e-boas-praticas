@@ -1,4 +1,4 @@
-package br.com.alura.services;
+package br.com.alura.service;
 
 import br.com.alura.client.HttpClientConfiguration;
 import br.com.alura.domain.PetDomain;
@@ -64,7 +64,7 @@ public class PetService {
             String raca = campos[2];
             int idade = Integer.parseInt(campos[3]);
             String cor = campos[4];
-            Float peso = Float.parseFloat(campos[5]);
+            Double peso = Double.parseDouble(campos[5]);
 
             PetDomain pet = new PetDomain(tipo, nome, raca, idade, cor, peso);
 
@@ -82,7 +82,7 @@ public class PetService {
                 System.out.println(responseBody);
                 break;
             }
-            reader.close();
         }
+        reader.close();
     }
 }

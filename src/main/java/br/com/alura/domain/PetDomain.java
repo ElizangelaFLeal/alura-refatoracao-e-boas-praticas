@@ -12,12 +12,12 @@ public class PetDomain{
         private String raca;
         private Integer idade;
         private String cor;
-        private Float peso;
+        private Double peso;
 
         public PetDomain() {
         }
 
-        public PetDomain(String tipo, String nome, String raca, Integer idade, String cor, Float peso) {
+        public PetDomain(String tipo, String nome, String raca, Integer idade, String cor, Double peso) {
             this.tipo = tipo;
             this.nome = nome;
             this.raca = raca;
