@@ -8,34 +8,23 @@ public class AdopetConsoleApplication {
 
     public static void main(String[] args) {
         CommandExecutor executor = new CommandExecutor();
-
         System.out.println("##### BOAS VINDAS AO SISTEMA ADOPET CONSOLE #####");
         try {
             int opcaoEscolhida = 0;
             while (opcaoEscolhida != 5) {
-                System.out.println("\nDIGITE O NÚMERO DA OPERAÇÃO DESEJADA:");
-                System.out.println("1 -> Listar abrigos cadastrados");
-                System.out.println("2 -> Cadastrar novo abrigo");
-                System.out.println("3 -> Listar pets do abrigo");
-                System.out.println("4 -> Importar pets do abrigo");
-                System.out.println("5 -> Sair");
+                exibirMenu();
 
                 String textoDigitado = new Scanner(System.in).nextLine();
                 opcaoEscolhida = Integer.parseInt(textoDigitado);
 
-                if (opcaoEscolhida == 1) {
-                    executor.execute(new ListarAbrigoCommand());
-                } else if (opcaoEscolhida == 2) {
-                    executor.execute(new CadastrarAbrigoCommand());
-                } else if (opcaoEscolhida == 3) {
-                    executor.execute(new ListarPetsCommand());
-                } else if (opcaoEscolhida == 4) {
-                    executor.execute(new CadastrarPetCommand());
-                } else if (opcaoEscolhida == 5) {
-                    break;
-                } else {
-                    System.out.println("NÚMERO INVÁLIDO!");
-                    opcaoEscolhida = 0;
+                switch (opcaoEscolhida) {
+                    case 1 -> executor.execute(new ListarAbrigoCommand());
+                    case 2 -> executor.execute(new CadastrarAbrigoCommand());
+                    case 3 -> executor.execute(new ListarPetsCommand());
+                    case 4 -> executor.execute(new CadastrarPetCommand());
+                    case 5 -> System.exit(0);
+                    default ->
+                       opcaoEscolhida = 0;
                 }
             }
             System.out.println("Finalizando o programa...");
@@ -44,5 +33,13 @@ public class AdopetConsoleApplication {
         }
     }
 
+    private static void exibirMenu(){
+        System.out.println("\nDIGITE O NÚMERO DA OPERAÇÃO DESEJADA:");
+        System.out.println("1 -> Listar abrigos cadastrados");
+        System.out.println("2 -> Cadastrar novo abrigo");
+        System.out.println("3 -> Listar pets do abrigo");
+        System.out.println("4 -> Importar pets do abrigo");
+        System.out.println("5 -> Sair");
+    }
 }
 
